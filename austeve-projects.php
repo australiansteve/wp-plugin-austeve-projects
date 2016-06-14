@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Projects - Custom Post Type
+ * Plugin Name: Projects - Boreal Environmental
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-projects
  * Description: Showcase a portfolio of projects
  * Version: 0.1.2
