@@ -25,17 +25,16 @@ get_header(); ?>
 					?>
 				</header><!-- .page-header -->
 
-				<div class="row small-up-1 medium-up-2 large-up-4" id="projects-block-grid">
-
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<div class="column">
+				<div class="row project-archive-item">
 
-            			<div class='container'>
+					<div class="small-12 columns">
 
-				            <a href='<?php echo get_permalink(); ?>' class=''>
+			            <a href='<?php echo get_permalink(); ?>' class=''>
 
+	            			<div class="row columns">
 								<?php 
 									$gallery = get_field('project_gallery', $post->ID); 
 									//var_dump($gallery);
@@ -48,18 +47,20 @@ get_header(); ?>
 										echo "<div class='gallery-placeholder'>Placeholder</div>";
 									}
 								?>
-								<br/>
+							</div>
+				
+	            			<div class="row columns">
 								<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+								<p><?php echo get_field('project_snippet', $post->ID); ?></p>
+							</div>
+				
+			            </a>
 
-				            </a>
-
-            			</div>
-					
 					</div>
 
-				<?php endwhile; ?>
+				</div> <!-- .project-archive-item.image -->
 
-				</div> <!-- #projects-block-grid -->
+				<?php endwhile; ?>
 
 				<?php the_posts_navigation(); ?>
 
