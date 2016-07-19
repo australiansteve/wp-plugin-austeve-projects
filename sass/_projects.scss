@@ -18,3 +18,23 @@ a {
 #projects-block-grid .gallery img {
 	max-height: 200px;
 }
+
+.project-archive-item .image {
+	position: relative;
+
+	.entry-title {
+		position: absolute;
+	    top: calc( 50% - 2rem);
+	    left: 0;
+	    width: 100%;
+	    text-align: center;
+	}
+
+	.project-snippet {
+	    position: absolute;
+	    top: calc( 50% + 0rem);
+	    left: 0;
+	    width: 100%;
+	    text-align: center;
+	}
+}

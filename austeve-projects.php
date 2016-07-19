@@ -181,4 +181,34 @@ function austeve_projects_entry_footer() {
 }
 endif;
 
+add_shortcode( 'projects_directory', 'austeve_projects_shortcode_archive' );
+
+function austeve_projects_shortcode_archive($atts){
+	ob_start();
+	$scAtts = shortcode_atts( array(
+		'orderby' => 'project-order',
+		'order' => 'ASC',
+		'number' => -1
+		), $atts);
+
+    $args = array(
+        'post_type' => 'austeve-projects',
+        'orderby'        => $scAtts['orderby'],
+    	'order'          => $scAtts['order'],
+    );
+
+    echo '<div class="row align-center archive-container">';
+    $query = new WP_Query( $args );
+    if( $query->have_posts() ){
+        while( $query->have_posts() ){
+            $query->the_post();
+
+            include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/projects-archive.php');             
+        }
+    }
+    echo '</div>';
+    
+    wp_reset_postdata();
+    return ob_get_clean();
+}
 ?>
