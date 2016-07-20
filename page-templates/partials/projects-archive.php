@@ -11,28 +11,24 @@
 
 	<div class="container project-archive-item">
 
-		<div class="row">
+		<a href="<?php echo get_permalink(); ?>">
+		
+		    <div class="project">
 
-			<a href="<?php echo get_permalink(); ?>">
-			
-				<div class="small-12 columns project-image">
+				<?php $gallery = get_field('project-gallery'); ?>
+				<div class="bg-image" style="background-image: url('<?php echo $gallery[0]['sizes']['large'] ?>');">
+				</div>
+				
+				<div class="content">
 
-					<div class="image">
-
-						<?php $gallery = get_field('project-gallery'); ?>
-				      	<img class="" alt="" src='<?php echo $gallery[0]['sizes']['large'] ?>' />
-					      
-				      	<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-
-						<p class="project-snippet"><?php echo get_field('project-snippet'); ?></p>
-
-					</div>
+		         	<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+		         	<p class="project-snippet"><?php echo get_field('project-snippet'); ?></p>
 
 				</div>
 
-			</a>
+			</div>
 
-		</div>
+		</a>
 
 	</div>
 

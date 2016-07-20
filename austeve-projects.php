@@ -153,11 +153,11 @@ function project_filter_archive_title( $title ) {
 add_filter( 'get_the_archive_title', 'project_filter_archive_title');
 
 function austeve_projects_enqueue_style() {
-	wp_enqueue_style( 'austeve-projects', plugin_dir_url( __FILE__ ). '/style.css' , false , '4.6'); 
+	wp_enqueue_style( 'austeve-projects', plugin_dir_url( __FILE__ ). 'style.css' , false , '4.6'); 
 }
 
 function austeve_projects_enqueue_script() {
-	//wp_enqueue_script( 'my-js', 'filename.js', false );
+	wp_enqueue_script( 'austeve-projects', plugin_dir_url( __FILE__ ).'js/plugin.js', false );
 }
 
 add_action( 'wp_enqueue_scripts', 'austeve_projects_enqueue_style' );
