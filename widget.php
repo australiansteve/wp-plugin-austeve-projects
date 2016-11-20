@@ -19,7 +19,42 @@ class austeve_projects_widget extends WP_Widget {
     // This is where the action happens
     public function widget( $args, $instance ) {
 
-    	$widgetOutput = "<div class='widget'>Projects ".$instance['projectcategory'];
+    	$widgetOutput = "<div class='row small-up-1 medium-up-3 large-up-4'>";
+
+		// args
+		$args = array (
+			'tax_query' => array(
+		        array(
+		            'taxonomy' => 'austeve_project_types',
+		            'terms' => $instance['projectcategory']
+		        )
+	   		)
+	   	);
+
+		// query
+		$the_query = new WP_Query( $args );
+
+		if( $the_query->have_posts() ): 
+			while( $the_query->have_posts() ) : $the_query->the_post();
+                $widgetOutput .= "<div class='column'>";
+
+        		if (locate_template('page-templates/partials/projects-archive.php') != '') {
+					// yep, load the page template
+					get_template_part('page-templates/partials/projects', 'archive');
+				} else {
+					// nope, load the default
+					include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/projects-archive.php');
+				}
+
+				$widgetOutput .= "</div>";
+			endwhile;
+		else:
+			$widgetOutput .= "<div class='column'>";
+			$widgetOutput .= "No projects found";
+			$widgetOutput .= "</div>";
+		endif;
+
+		wp_reset_query();	 // Restore global post data stomped by the_post().
 
     	$widgetOutput .= "</div>";
     	echo $widgetOutput;

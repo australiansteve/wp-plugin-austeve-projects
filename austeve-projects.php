@@ -158,7 +158,7 @@ function austeve_projects_enqueue_style() {
 }
 
 function austeve_projects_enqueue_script() {
-	wp_enqueue_script( 'austeve-projects', plugin_dir_url( __FILE__ ).'js/plugin.js', false );
+	wp_enqueue_script( 'austeve-projects', plugin_dir_url( __FILE__ ).'js/plugin.js', array( 'jquery' ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'austeve_projects_enqueue_style' );

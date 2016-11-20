@@ -27,7 +27,7 @@ gulp.task('styles', function() {
 		})) // our autoprefixer - add and remove vendor prefixes using caniuse.com
 		.pipe(gulp.dest('.')) // Location of our style.css file
 		.pipe(notify({
-			message: "Styles task complete!"
+			message: "✔ Styles task complete!"
 		}));
 });
 
@@ -45,6 +45,23 @@ gulp.task('deploylocal', function() {
 
 	return gulp.src(files, {base:"."})
 	        .pipe(gulp.dest(dest));
+});
+
+
+////////////////////////////////////////////////////////////////////////////////
+// JS
+////////////////////////////////////////////////////////////////////////////////
+
+gulp.task('js', function() {
+	return gulp.src('js/front-end.js')
+		.pipe(gulp.dest('./assets/dist/js')) //Copy the file as is
+		.pipe(uglify().on('error', notify.onError(function(error) {
+			return "Error: " + error.message;
+			}))
+		)
+		.pipe(concat('front-end.min.js')) //Copy the uglified version
+		.pipe(gulp.dest('./assets/dist/js'))
+		.pipe(notify({ message: "✔ JS task complete!"}));
 });
 
 // Our default gulp task, which runs all of our tasks upon typing in 'gulp' in Terminal
