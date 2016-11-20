@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Projects - Boreal Environmental
+ * Plugin Name: Projects - Elwoods Wood Lab
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-projects
  * Description: Showcase a portfolio of projects
  * Version: 0.1.2
