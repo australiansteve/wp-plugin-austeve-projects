@@ -11,6 +11,7 @@
 
 include( plugin_dir_path( __FILE__ ) . 'admin.php');
 include( plugin_dir_path( __FILE__ ) . 'widget.php');
+include( plugin_dir_path( __FILE__ ) . 'widget-project-type.php');
 
 /*
 * Creating a function to create our CPT
