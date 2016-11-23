@@ -1,12 +1,12 @@
 jQuery( document ).ready(function(){
 	
-	jQuery('.project').mouseover(function(){
+	jQuery('.project').on("mouseover touchstart", function(){
 	    jQuery(this).find("div.content").show();
 	  
 	});
 
-	jQuery('.project').mouseout(function(){
+	jQuery('.project').on("mouseover touchend", function(){
 	    jQuery(this).find("div.content").hide();
 	});
-
+	
 });
