@@ -9,12 +9,12 @@ jQuery( document ).ready(function(){
 	    jQuery(this).find("div.content").hide();
 	});
 
-	jQuery('.pagelink').mouseover(function(){
+	jQuery('.pagelink').on("mouseover touchstart", function(){
 	    jQuery(this).find("div.content").show();
 	  
 	});
 
-	jQuery('.pagelink').mouseout(function(){
+	jQuery('.pagelink').on("mouseover touchend", function(){
 	    jQuery(this).find("div.content").hide();
 	});
 
