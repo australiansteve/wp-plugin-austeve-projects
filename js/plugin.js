@@ -5,7 +5,7 @@ jQuery( document ).ready(function(){
 	  
 	});
 
-	jQuery('.project').on("mouseover touchend", function(){
+	jQuery('.project').on("mouseout touchend", function(){
 	    jQuery(this).find("div.content").hide();
 	});
 
@@ -14,7 +14,7 @@ jQuery( document ).ready(function(){
 	  
 	});
 
-	jQuery('.pagelink').on("mouseover touchend", function(){
+	jQuery('.pagelink').on("mouseout touchend", function(){
 	    jQuery(this).find("div.content").hide();
 	});
 
