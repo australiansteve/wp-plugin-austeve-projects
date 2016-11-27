@@ -19,7 +19,7 @@ class austeve_projects_widget extends WP_Widget {
     // This is where the action happens
     public function widget( $args, $instance ) {
 
-    	echo "<div class='row small-up-1 medium-up-3 large-up-4'>";
+    	echo "<div class='row small-up-1 medium-up-2'>";
 
 		// args
 		$args = array (
