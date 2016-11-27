@@ -25,42 +25,28 @@ get_header(); ?>
 					?>
 				</header><!-- .page-header -->
 
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+				<div class="row small-up-1 medium-up-2 large-up-3 align-center">
 
-				<div class="row project-archive-item">
+					<?php /* Start the Loop */ ?>
+					<?php 
+					while ( have_posts() ) : the_post(); 
 
-					<div class="small-12 columns">
+						echo '<div class="column">';
 
-			            <a href='<?php echo get_permalink(); ?>' class=''>
+		        		if (locate_template('page-templates/partials/projects-archive.php') != '') {
+							// yep, load the page template
+							get_template_part('page-templates/partials/projects', 'archive');
+						} else {
+							// nope, load the default
+							include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/projects-archive.php');
+						}
 
-	            			<div class="row columns">
-								<?php 
-									$gallery = get_field('project_gallery', $post->ID); 
-									//var_dump($gallery);
-									if ($gallery) {
-										//Use the first image in the gallery
-										echo "<div class='gallery'><img src='".$gallery[0]['url']."'/></div>";
-									}
-									else {
-										//Shouldn't happen
-										echo "<div class='gallery-placeholder'>Placeholder</div>";
-									}
-								?>
-							</div>
-				
-	            			<div class="row columns">
-								<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-								<p><?php echo get_field('project_snippet', $post->ID); ?></p>
-							</div>
-				
-			            </a>
+						echo '</div>';
 
-					</div>
+					endwhile; 
+					?>
 
-				</div> <!-- .project-archive-item.image -->
-
-				<?php endwhile; ?>
+				</div>
 
 				<?php the_posts_navigation(); ?>
 

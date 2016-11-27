@@ -15,21 +15,22 @@
 
 	<div class="entry-content">
 
-		<div class="gallery">
 		<?php 
-			$gallery_images = get_field('gallery'); 
-			
-			foreach($gallery_images as $image)
-			{
-				echo "<img class='project-gallery-image' src='".$image['url']."'/>";
-			}
+		$gallery_images = get_field('gallery'); 
+
 		?>
+
+		<div class="cover-image">
+			<img class="project-gallery-image" src="<?php echo $gallery_images[0]['sizes']['large'];?>" height="<?php echo $gallery_images[0]['sizes']['large-height'];?>" width="<?php echo $gallery_images[0]['sizes']['large-width'];?>"/>
 		</div>
 
-		<div class="description">
-		<?php echo get_field('description'); ?>
+		<?php if (get_field('client')) : ?>
+		<div class="client">
+			Client: <?php echo get_field('client'); ?>
 		</div>
+		<?php endif; ?>
 
+		<?php if (get_field('date')) : ?>
 		<div class="date">
 		<?php 
 			$date = get_field('date');
@@ -50,19 +51,41 @@
 			if ($currentTime < $time) {
 				echo "Coming: ";
 			}
+			else {
+				echo "Completion: ";
+			}
 
 			// format date (November 11th 1988)
 			echo date('F Y', $time);
 		?>
 		</div>
+		<?php endif; ?>
 
-		<div class="client">
-		<?php echo get_field('client'); ?>
+		<div class="description">
+		<?php echo get_field('description'); ?>
 		</div>
 
 		<div class="materials">
 		<?php echo get_field('materials'); ?>
 		</div>
+
+		<?php if (count($gallery_images) > 1) { ?>
+		<div class="gallery">	
+
+			<div class="row small-up-1 medium-up-3 align-center align-middle">
+			<?php
+				foreach($gallery_images as $image)
+				{
+					?>
+					<div class="column">
+						<img class="project-gallery-image" src="<?php echo $image['sizes']['medium'];?>" height="<?php echo $image['sizes']['medium-height'];?>" width="<?php echo $image['sizes']['medium-width'];?>"/>
+					</div>
+					<?php
+				}
+			?>
+			</div>
+		</div>
+		<?php } ?>
 
 		<?php
 			wp_link_pages( array(

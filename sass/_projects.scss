@@ -1,39 +1,59 @@
-header.page-header {
-	margin-bottom: 3rem;
-}
 
-.project-archive-item .project {
-	text-align: center;
-	position: relative;
+article.austeve-projects {
+    background-color: #FFF;
+    text-align: center;
 
-	.bg-image {
-		position: relative;
-		min-height: 20rem;
-		max-height: 20rem;
-		background-position: 50% 50%;
-		background-repeat: no-repeat;
-		background-size: cover;
+    .entry-content div {
+	    margin-top: 1rem;
 	}
 
-	.content { 
-		color: white;
-		background: rgba(0,0,0, 0.5);
-		width: 100%;  
-		height: 100%;
-		display: none;
-		opacity: 1;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		padding-top: 7rem;
+    .entry-content .gallery div.column {
+	    margin-top: 3rem;
+	}
 
-		h2 {
-			font-size: 1.45rem;
+	footer {
+	    padding-top: 5rem;
+	}
+}
+
+.project-archive-item  {
+	
+	margin-top: 2rem;
+	
+	.project {
+	
+		text-align: center;
+		position: relative;
+
+		.bg-image {
+			position: relative;
+			min-height: 20rem;
+			max-height: 20rem;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 
-		p {
-			font-size: 1rem;
+		.content { 
+			color: white;
+			background: rgba(0,0,0, 0.5);
+			width: 100%;  
+			height: 100%;
+			display: none;
+			opacity: 1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding-top: 7rem;
+
+			h2 {
+				font-size: 1.45rem;
+			}
+
+			p {
+				font-size: 1rem;
+			}
 		}
 	}
 }
