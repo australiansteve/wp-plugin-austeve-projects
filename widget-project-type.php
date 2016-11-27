@@ -50,7 +50,7 @@ class austeve_project_type_widget extends WP_Widget {
             while( $the_query->have_posts() ) : $the_query->the_post();
                 
                 echo "<div class='column'>";
-                echo "<a href='".get_permalink($instance['pagelink'])."' target='blank' title='".get_the_title()."'>";
+                echo "<a href='".get_permalink($instance['pagelink'])."' ".($instance['newtab'] ? "target='blank'" : "")." title='".get_the_title()."'>";
 
                 echo "<div class='pagelink'>";
 
@@ -99,6 +99,12 @@ class austeve_project_type_widget extends WP_Widget {
         else {
             $imageurl = __( '', 'austeve_projects_widget_domain' );
         }
+        if ( isset( $instance[ 'newtab' ] ) ) {
+            $newtab = $instance[ 'newtab' ];
+        }
+        else {
+            $newtab = false;
+        }
 
         // Widget admin form
 ?>
@@ -118,6 +124,13 @@ class austeve_project_type_widget extends WP_Widget {
                 'option_none_value' => '-1'
             ));
         ?>
+        </p>
+
+        <p> 
+        <label for="<?php echo $this->get_field_id( 'newtab' ); ?>"><?php _e( 'Open in new tab: ' ); ?></label> 
+        
+        <input type="checkbox" name="<?php echo $this->get_field_name('newtab'); ?>" id = "<?php echo $this->get_field_id('newtab');?>" <?php echo $newtab ? " checked='checked'" : "";?> />
+        
         </p>
 
         <?php
@@ -142,6 +155,7 @@ class austeve_project_type_widget extends WP_Widget {
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
         $instance['pagelink'] = ( ! empty( $new_instance['pagelink'] ) ) ? $new_instance['pagelink'] : '';
         $instance['imageurl'] = ( ! empty( $new_instance['imageurl'] ) ) ? $new_instance['imageurl'] : '';
+        $instance['newtab'] = ( ! empty( $new_instance['newtab'] ) ) ? $new_instance['newtab'] : '';
 
         return $instance;
     }
